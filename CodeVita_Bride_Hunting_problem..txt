@@ -1,0 +1,168 @@
+# CodeVita Bride hunting problem.
+
+# Note:- Conditions for two cases are missing (Conditions for both the test cases are included but other than test cases few other
+   # combinations were not included).
+
+list1 = []
+list3 = []
+list4 = []
+list5 = []
+list6 = []
+
+sum1 = 0
+
+flag = 0
+    
+
+N, M = map(int, input("Enter the number of rows and columns:").split(" "))
+
+for i in range(0, N): 
+    list2 = []
+    for j in range(0, M):
+        list2.append(int(input("Enter the value: ")))
+    list1.append(list2)
+    
+print(list1)
+
+for i in range(0, len(list1)):
+    for j in range(0, len(list1[i])):
+            if i > 0 and i < (N-1) and j > 0 and j < (M-1):
+                if list1[i][j] == 1:
+                    list3.append(i)
+                    list4.append(j)
+                    
+                    if list1[i][j+1] == 1:
+                        sum1 = 1
+                        
+                    if list1[i][j-1] == 1:
+                        sum1 = sum1 + 1
+                        
+                    if list1[i+1][j] == 1:
+                        sum1 = sum1 + 1
+                        
+                    if list1[i-1][j] == 1:
+                        sum1 = sum1 + 1
+                        
+                    if list1[i+1][j-1] == 1:
+                        sum1 = sum1 + 1
+                        
+                    if list1[i-1][j+1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j+1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j-1] == 1:
+                        sum1 += 1
+                    
+                    list5.append(sum1)
+                    sum1 = 0
+                    
+            if i == 0 and j >= 2 and j != (M-1):
+                if list1[i][j] == 1:
+                    list3.append(i)
+                    list4.append(j)
+                    
+                    if list1[i][j+1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j+1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j-1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i][j-1] == 1:
+                        sum1 += 1
+                        
+                    list5.append(sum1)
+                    sum1 = 0
+                    
+            if j == (M-1) and i == 0:
+                if list1[i][j] == 1:
+                    list3.append(i)
+                    list4.append(j)
+                    
+                    if list1[i][j-1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j] == 1:
+                        sum1 += 1
+                        
+                    if list1[i+1][j-1] == 1:
+                        sum1 += 1
+                        
+                    list5.append(sum1)
+                    sum1 = 0
+                    
+            if i == (N-1) and j == (M-1):
+                if list1[i][j] == 1:
+                    list3.append(i)
+                    list4.append(j)
+                    
+                    if list1[i][j-1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j-1] == 1:
+                        sum1 += 1
+                        
+                    list5.append(sum1)
+                    sum1 = 0
+                    
+            if i == (N-1) and j != 0 and j != (M-1):
+                if list1[i][j] == 1:
+                    list3.append(i)
+                    list4.append(j)
+                    
+                    if list1[i][j+1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i][j-1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j-1] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j] == 1:
+                        sum1 += 1
+                        
+                    if list1[i-1][j+1] == 1:
+                        sum1 += 1
+                        
+                    list5.append(sum1)
+                    sum1 = 0
+    
+    
+print(list3)
+print(list4)
+print(list5)
+
+x = max(list5)
+
+for i in range(0, len(list5)):
+    if x == list5[i]:
+        list6.append(i)
+        
+print(list6)
+
+for i in range(0, len(list6)-1):
+    if list3[list6[i]] == list3[list6[i+1]] and list4[list6[i]] == list4[list6[i+1]]:
+        flag = 1
+        
+if flag == 1:
+    print("Polygamy not allowed")
+    
+elif list5 == [0]:
+    print("No suitable girl found")
+    
+else:
+    ind = list5.index(x)
+    print(list3[ind]+1, end=':')     # as i took indexing from zero so adding '1'.
+    print(list4[ind]+1, end=':')
+    print(x)
