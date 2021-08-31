@@ -22,7 +22,7 @@ for i in range(0, N):
         list2.append(int(input("Enter the value: ")))
     list1.append(list2)
     
-print(list1)
+# print(list1)
 
 for i in range(0, len(list1)):
     for j in range(0, len(list1[i])):
@@ -139,9 +139,9 @@ for i in range(0, len(list1)):
                     sum1 = 0
     
     
-print(list3)
-print(list4)
-print(list5)
+# print(list3)
+# print(list4)
+# print(list5)
 
 x = max(list5)
 
@@ -149,7 +149,7 @@ for i in range(0, len(list5)):
     if x == list5[i]:
         list6.append(i)
         
-print(list6)
+# print(list6)
 
 for i in range(0, len(list6)-1):
     if list3[list6[i]] == list3[list6[i+1]] and list4[list6[i]] == list4[list6[i+1]]:
